@@ -1,13 +1,13 @@
 {
-  "name": "app",
-  "productName": "App",
-  "version": "0.0.0",
-  "description": "",
+  "name": "test-electron-update",
+  "productName": "Electron Update Tester",
+  "version": "1.2.0",
+  "description": "Electron Update Test",
   "license": "MIT",
-  "repository": "user/repo",
+  "repository": "https://github.com/jfix/electron-plugin-test",
   "author": {
-    "name": "",
-    "email": "",
+    "name": "Jakob Fix",
+    "email": "jakob.fix@gmail.com",
     "url": ""
   },
   "scripts": {
@@ -17,13 +17,26 @@
   },
   "dependencies": {
     "electron-debug": "^1.0.0",
+    "electron-log": "^2.2.11",
     "electron-updater": "^2.15.0"
   },
   "devDependencies": {
+    "electron-builder": "^19.43.0",
     "devtron": "^1.1.0",
     "electron-packager": "^8.0.0",
     "electron": "^1.6.6",
     "xo": "^0.18.0"
+  },
+  "build": {
+    "appId": "org.oecd.test.app",
+    "mac": {
+      "target": "default",
+      "category": "public.app-category.developer-tools"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "publish": ["github"]
   },
   "xo": {
     "envs": [
