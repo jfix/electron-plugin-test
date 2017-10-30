@@ -1,8 +1,12 @@
 'use strict'
 const electron = require('electron')
+const log = require('electron-log')
 const autoUpdater = require('electron-updater').autoUpdater
-
 const app = electron.app
+
+autoUpdater.logger = log
+autoUpdater.logger.transports.file.level = 'info'
+log.info('App starting ...')
 
 // Adds debug features like hotkeys for triggering dev tools and reload
 require('electron-debug')()
@@ -12,7 +16,7 @@ let mainWindow
 
 function onClosed () {
   // Dereference the window
-    // For multiple windows store them in an array
+  // For multiple windows store them in an array
   mainWindow = null
 }
 
@@ -41,6 +45,6 @@ app.on('activate', () => {
 })
 
 app.on('ready', () => {
-  autoUpdater.checkForUpdatesAndNotify()
   mainWindow = createMainWindow()
+  autoUpdater.checkForUpdatesAndNotify()
 })
